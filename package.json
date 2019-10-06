@@ -3,8 +3,23 @@
   "version": "0.0.3",
   "private": true,
   "devDependencies": {
+    "babel-eslint": "^9.0.0",
     "concurrently": "4.1.0",
-    "react-scripts": "^2.1.1"
+    "react-scripts": "^2.1.1",
+    "eslint-config-airbnb": "^17.1.1",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-config-wesbos": "0.0.19",
+    "eslint-plugin-html": "^5.0.5",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.15.1",
+    "eslint-plugin-react-hooks": "^1.7.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "wesbos"
+    ]
   },
   "dependencies": {
     "autoprefixer-stylus": "0.14.0",
@@ -16,7 +31,8 @@
     "react-router-dom": "^4.2.2",
     "react-transition-group": "^2.2.1",
     "serve": "^10.1.1",
-    "stylus": "0.54.5"
+    "stylus": "0.54.5",
+    "babel-core": "^7.0.0-bridge.0"
   },
   "scripts": {
     "dev": "react-scripts start",
