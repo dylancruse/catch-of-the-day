@@ -7,7 +7,9 @@ export default class App extends Component {
   render() {
     return (
       <div className="catch-of-the-day">
-        <Header />
+        <div className="menu">
+          <Header tagline="fresh feesh daily" />
+        </div>
         <Order />
         <Inventory />
       </div>
