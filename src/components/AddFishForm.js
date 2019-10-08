@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 export default class AddFishForm extends Component {
+  // Refs to access form inputs
   nameRef = React.createRef();
 
   priceRef = React.createRef();

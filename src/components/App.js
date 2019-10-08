@@ -10,6 +10,7 @@ export default class App extends Component {
 
   addFish = fish => {
     const { fishes } = this.state;
+    // add new fish to state
     fishes[`fish${Date.now()}`] = fish;
     this.setState({
       fishes,
