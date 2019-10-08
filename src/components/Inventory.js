@@ -1,7 +1,19 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import AddFishForm from './AddFishForm';
 
 export default class Inventory extends Component {
   render() {
-    return <div className="inventory">Inventory</div>;
+    const { addFish } = this.props;
+    return (
+      <div className="inventory">
+        <h2>Inventory</h2>
+        <AddFishForm addFish={addFish} />
+      </div>
+    );
   }
 }
+
+Inventory.propTypes = {
+  addFish: PropTypes.func.isRequired,
+};
