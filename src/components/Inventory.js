@@ -4,11 +4,14 @@ import AddFishForm from './AddFishForm';
 
 export default class Inventory extends Component {
   render() {
-    const { addFish } = this.props;
+    const { addFish, loadSampleFishes } = this.props;
     return (
       <div className="inventory">
         <h2>Inventory</h2>
         <AddFishForm addFish={addFish} />
+        <button onClick={loadSampleFishes} type="button">
+          Load Sample Fishes
+        </button>
       </div>
     );
   }
@@ -16,4 +19,5 @@ export default class Inventory extends Component {
 
 Inventory.propTypes = {
   addFish: PropTypes.func.isRequired,
+  loadSampleFishes: PropTypes.func.isRequired,
 };
