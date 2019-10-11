@@ -8,6 +8,7 @@ import sampleFishes from '../sample-fishes';
 export default class App extends Component {
   state = {
     fishes: {},
+    order: {},
   };
 
   addFish = fish => {
@@ -25,6 +26,12 @@ export default class App extends Component {
     });
   };
 
+  addToOrder = key => {
+    const { order } = this.state;
+    order[key] = order[key] + 1 || 1;
+    this.setState({ order });
+  };
+
   render() {
     const { fishes } = this.state;
     return (
@@ -33,7 +40,12 @@ export default class App extends Component {
           <Header tagline="fresh feesh daily" />
           <ul className="fishes">
             {Object.keys(fishes).map(key => (
-              <Fish details={fishes[key]} key={key} />
+              <Fish
+                details={fishes[key]}
+                key={key}
+                index={key}
+                addToOrder={this.addToOrder}
+              />
             ))}
           </ul>
         </div>

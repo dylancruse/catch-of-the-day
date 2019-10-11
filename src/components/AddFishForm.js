@@ -41,7 +41,7 @@ export default class AddFishForm extends Component {
           <option value="available">Fresh!</option>
           <option value="unavailable">Sold out!</option>
         </select>
-        <textarea name="desc" ref={this.descRef} placeholder="Desc" />
+        <textarea name="desc" ref={this.descRef} placeholder="Description" />
         <input
           name="image"
           ref={this.imageRef}

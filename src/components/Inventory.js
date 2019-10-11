@@ -5,6 +5,7 @@ import AddFishForm from './AddFishForm';
 export default class Inventory extends Component {
   render() {
     const { addFish, loadSampleFishes } = this.props;
+
     return (
       <div className="inventory">
         <h2>Inventory</h2>
