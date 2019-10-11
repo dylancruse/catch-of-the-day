@@ -1,7 +1,22 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class Order extends Component {
   render() {
-    return <div className="order">Order</div>;
+    const { fishes, order } = this.props;
+    const orderIds = Object.keys(order);
+
+    return (
+      <div className="order-wrap">
+        <h2>Order</h2>
+        {orderIds}
+        <ul></ul>
+      </div>
+    );
   }
 }
+
+Order.propTypes = {
+  fishes: PropTypes.object.isRequired,
+  order: PropTypes.object.isRequired,
+};
