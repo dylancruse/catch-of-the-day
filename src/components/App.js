@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import base from '../base';
 import Header from './Header';
 import Order from './Order';
 import Inventory from './Inventory';
@@ -10,6 +12,36 @@ export default class App extends Component {
     fishes: {},
     order: {},
   };
+
+  componentDidMount() {
+    const { match } = this.props;
+    const { storeId } = match.params;
+    // first reinstate localStorage
+    const localStorageRef = localStorage.getItem(storeId);
+    if (localStorageRef) {
+      this.setState({
+        order: JSON.parse(localStorageRef),
+      });
+    }
+    // then bind fishes state to firebase
+    this.ref = base.syncState(`${storeId}/fishes`, {
+      context: this,
+      state: 'fishes',
+    });
+  }
+
+  componentDidUpdate() {
+    const { order } = this.state;
+    const { match } = this.props;
+    const { storeId } = match.params;
+    // save order state in localStorage
+    localStorage.setItem(storeId, JSON.stringify(order));
+  }
+
+  componentWillUnmount() {
+    // remove firebase binding
+    base.removeBinding(this.ref);
+  }
 
   addFish = fish => {
     const { fishes } = this.state;
@@ -58,3 +90,7 @@ export default class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  match: PropTypes.object.isRequired,
+};
