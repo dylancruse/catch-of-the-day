@@ -43,6 +43,12 @@ export default class App extends Component {
     base.removeBinding(this.ref);
   }
 
+  loadSampleFishes = () => {
+    this.setState({
+      fishes: { ...sampleFishes },
+    });
+  };
+
   addFish = fish => {
     const { fishes } = this.state;
     // add new fish to state
@@ -58,15 +64,21 @@ export default class App extends Component {
     this.setState({ fishes });
   };
 
-  loadSampleFishes = () => {
-    this.setState({
-      fishes: { ...sampleFishes },
-    });
+  deleteFish = key => {
+    const { fishes } = this.state;
+    fishes[key] = null;
+    this.setState({ fishes });
   };
 
   addToOrder = key => {
     const { order } = this.state;
     order[key] = order[key] + 1 || 1;
+    this.setState({ order });
+  };
+
+  removeFromOrder = key => {
+    const { order } = this.state;
+    delete order[key];
     this.setState({ order });
   };
 
@@ -87,11 +99,16 @@ export default class App extends Component {
             ))}
           </ul>
         </div>
-        <Order fishes={fishes} order={order} />
+        <Order
+          fishes={fishes}
+          order={order}
+          removeFromOrder={this.removeFromOrder}
+        />
         <Inventory
           fishes={fishes}
           addFish={this.addFish}
           updateFish={this.updateFish}
+          deleteFish={this.deleteFish}
           loadSampleFishes={this.loadSampleFishes}
         />
       </div>

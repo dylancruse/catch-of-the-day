@@ -4,7 +4,7 @@ import { formatPrice } from '../helpers';
 
 export default class Order extends Component {
   renderOrder = key => {
-    const { fishes, order } = this.props;
+    const { fishes, order, removeFromOrder } = this.props;
     const fish = fishes[key];
     const count = order[key];
     const isAvailable = fish && fish.status === 'available';
@@ -13,13 +13,19 @@ export default class Order extends Component {
     if (!isAvailable) {
       return (
         <li key={key}>
-          Sorry {fish ? fish.name : 'fish'} is no longer available 😫
+          {fish ? fish.name : 'fish'} is no longer available 😫
+          <button type="button" onClick={() => removeFromOrder(key)}>
+            &times;
+          </button>
         </li>
       );
     }
     return (
       <li key={key}>
         {count} lbs {fish.name} {formatPrice(count * fish.price)}
+        <button type="button" onClick={() => removeFromOrder(key)}>
+          &times;
+        </button>
       </li>
     );
   };
@@ -53,4 +59,5 @@ export default class Order extends Component {
 Order.propTypes = {
   fishes: PropTypes.object.isRequired,
   order: PropTypes.object.isRequired,
+  removeFromOrder: PropTypes.func.isRequired,
 };

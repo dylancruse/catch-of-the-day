@@ -13,7 +13,7 @@ export default class EditFishForm extends Component {
   };
 
   render() {
-    const { fish } = this.props;
+    const { fish, index, deleteFish } = this.props;
     return (
       <div className="fish-edit">
         <input
@@ -48,6 +48,9 @@ export default class EditFishForm extends Component {
           type="text"
           name="image"
         />
+        <button type="button" onClick={() => deleteFish(index)}>
+          Remove fish
+        </button>
       </div>
     );
   }
@@ -57,4 +60,5 @@ EditFishForm.propTypes = {
   fish: PropTypes.object.isRequired,
   index: PropTypes.string.isRequired,
   updateFish: PropTypes.func.isRequired,
+  deleteFish: PropTypes.func.isRequired,
 };
