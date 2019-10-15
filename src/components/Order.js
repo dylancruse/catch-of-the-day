@@ -20,12 +20,14 @@ export default class Order extends Component {
 
     if (!isAvailable) {
       return (
-        <li key={key}>
-          {fish ? fish.name : 'fish'} no longer available 😫
-          <button type="button" onClick={() => removeFromOrder(key)}>
-            &times;
-          </button>
-        </li>
+        <CSSTransition {...transitionOptions}>
+          <li key={key}>
+            {fish ? fish.name : 'fish'} no longer available 😫
+            <button type="button" onClick={() => removeFromOrder(key)}>
+              &times;
+            </button>
+          </li>
+        </CSSTransition>
       );
     }
     return (
