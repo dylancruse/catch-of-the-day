@@ -84,6 +84,8 @@ export default class App extends Component {
 
   render() {
     const { fishes, order } = this.state;
+    const { match } = this.props;
+    const { storeId } = match.params;
     return (
       <div className="catch-of-the-day">
         <div className="menu">
@@ -110,6 +112,7 @@ export default class App extends Component {
           updateFish={this.updateFish}
           deleteFish={this.deleteFish}
           loadSampleFishes={this.loadSampleFishes}
+          storeId={storeId}
         />
       </div>
     );
