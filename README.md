@@ -1,4 +1,4 @@
-# catch-of-the-day
+# Catch Of The Day 🎣
 This app is live!
 
 See it at: https://cotd-dylan-cruse.netlify.com/
